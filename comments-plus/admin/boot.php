@@ -76,8 +76,6 @@ if ( ! defined( 'LOADING_COMMENTS_PLUS_AS_ADDON' ) ) {
 			}
 
 			$url .= '?utm_source=wordpress.org&utm_campaign=' . WCM_Plugin::app()->getPluginName();
-
-			$links[] = '<a href="' . $url . '" style="color: #FF5722;font-weight: bold;" target="_blank">' . __( 'Get ultimate plugin free', 'comments-plus' ) . '</a>';
 		}
 
 		return $links;
@@ -95,7 +93,7 @@ if ( ! defined( 'LOADING_COMMENTS_PLUS_AS_ADDON' ) ) {
 	 */
 	function wbcr_cmp_rating_widget_url( $page_url, $plugin_name ) {
 		if ( ! defined( 'LOADING_COMMENTS_PLUS_AS_ADDON' ) && ( $plugin_name == WCM_Plugin::app()->getPluginName() ) ) {
-			return 'https://goo.gl/v4QkW5';
+			return 'https://wordpress.org/support/plugin/comments-plus/reviews/#new-post';
 		}
 
 		return $page_url;
@@ -135,7 +133,7 @@ if ( ! defined( 'LOADING_COMMENTS_PLUS_AS_ADDON' ) ) {
 		];
 		$options[] = [
 			'name'  => 'disable_comments_extra_post_types',
-			'title' => __( 'Custom post types', 'comments-plus' ),
+			'title' => __( 'Custom Post Types (comma-separated slugs)', 'comments-plus' ),
 			'tags'  => []
 		];
 		$options[] = [

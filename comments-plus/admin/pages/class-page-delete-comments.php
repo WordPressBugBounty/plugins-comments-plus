@@ -37,13 +37,6 @@ class WbcrCmp_DeleteCommentsPage extends WBCR\Factory_Templates_134\Pages\PageBa
 	 *
 	 * @var string
 	 */
-	public $page_parent_page = "comments";
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @var string
-	 */
 	public $page_menu_dashicon = 'dashicons-testimonial';
 
 	/**
@@ -69,7 +62,7 @@ class WbcrCmp_DeleteCommentsPage extends WBCR\Factory_Templates_134\Pages\PageBa
 	 * @param \Wbcr_Factory480_Plugin $plugin
 	 */
 	public function __construct( Wbcr_Factory480_Plugin $plugin ) {
-		$this->menu_title = __( 'Comments cleaner', 'comments-plus' );
+		$this->menu_title = __( 'Delete Comments', 'comments-plus' );
 
 		parent::__construct( $plugin );
 	}
@@ -99,7 +92,7 @@ class WbcrCmp_DeleteCommentsPage extends WBCR\Factory_Templates_134\Pages\PageBa
 				'wbcr_cmp_code'                 => 'interal_error'
 			],
 			'type'       => 'danger',
-			'message'    => __( 'An error occurred while trying to delete comments. Internal error occured. Please try again later.', 'comments-plus' )
+			'message'    => __( 'An internal error occurred while trying to delete comments. Please try again later.', 'comments-plus' )
 		];
 
 		return $notices;
@@ -234,7 +227,7 @@ class WbcrCmp_DeleteCommentsPage extends WBCR\Factory_Templates_134\Pages\PageBa
 				});
 
 				$('.wbcr-cmp-delete-comments-button').click(function() {
-					var confrimDelete = confirm('<?php _e( 'Are you sure you want to delete comments from the database without restoring?', 'comments-plus' ); ?>');
+					var confrimDelete = confirm('<?php _e( 'Are you sure you want to permanently delete comments from the database? This action cannot be undone. Make sure you have a backup before proceeding.', 'comments-plus' ); ?>');
 
 					if( !confrimDelete ) {
 						return false;
@@ -254,9 +247,9 @@ class WbcrCmp_DeleteCommentsPage extends WBCR\Factory_Templates_134\Pages\PageBa
 			});
         </script>
         <div class="wbcr-factory-page-group-header" style="margin-top:0;">
-            <strong><?php _e( 'Comments clearing tools', 'comments-plus' ) ?></strong>
+            <strong><?php _e( 'Comment Cleaning Tools', 'comments-plus' ) ?></strong>
             <p>
-				<?php _e( 'These functions can be useful for global disabling comments or bulk cleaning spam comments.', 'comments-plus' ) ?>
+				<?php _e( 'These functions are useful for globally disabling comments or cleaning spam comments in bulk.', 'comments-plus' ) ?>
             </p>
         </div>
         <form method="post" action="<?= $this->getActionUrl( 'delete-all-comments' ) ?>" style="padding: 20px;">
@@ -266,7 +259,7 @@ class WbcrCmp_DeleteCommentsPage extends WBCR\Factory_Templates_134\Pages\PageBa
                 <div style="height:150px; width:400px; padding:10px 10px 0; background: #fff; border:1px solid #ccc; overflow-y: scroll; overflow-x:hidden;">
             <p>
                 <label>
-                    <input type="checkbox" id="wbcr-cmp-all-types-checkbox" name="wbcr_cmp_post_type[]" value="all" checked/> <?php _e( 'Select all', 'comments-plus' ); ?>
+                    <input type="checkbox" id="wbcr-cmp-all-types-checkbox" name="wbcr_cmp_post_type[]" value="all" checked/> <?php _e( 'Select All Post Types', 'comments-plus' ); ?>
                 </label>
             </p>
 			<?php foreach ( (array) $post_types as $key => $type ): ?>

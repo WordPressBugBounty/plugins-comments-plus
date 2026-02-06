@@ -5,7 +5,7 @@
  * @version 1.0
  */
 
-.wbcr-clearfy-pseudo-link {
+.wbcr-clearfy-pseudo-link:not(.wp-block-comment-author-name .wbcr-clearfy-pseudo-link) {
     color: #008acf;
     cursor: pointer;
     text-decoration: underline;

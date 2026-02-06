@@ -187,7 +187,7 @@ class WbcrCmp_ConfigComments extends WBCR\Factory_Templates_134\Configurate {
 		global $post;
 		// Without a dicussion meta box, comment_status will be set to closed on new/updated posts
 		if ( in_array( $post->post_type, $this->modified_types ) ) {
-			echo '<input type="hidden" name="comment_status" value="' . $post->comment_status . '" /><input type="hidden" name="ping_status" value="' . $post->ping_status . '" />';
+			echo '<input type="hidden" name="comment_status" value="' . esc_attr( $post->comment_status ) . '" /><input type="hidden" name="ping_status" value="' . esc_attr( $post->ping_status ) . '" />';
 		}
 	}
 
@@ -287,7 +287,7 @@ class WbcrCmp_ConfigComments extends WBCR\Factory_Templates_134\Configurate {
 			return $matches[0];
 		}
 
-		return '<span class="wbcr-clearfy-pseudo-link" data-uri="' . $matches[1] . '" > ' . $matches[2] . '</span>';
+		return '<span class="wbcr-clearfy-pseudo-link" data-uri="' . esc_url( $matches[1] ) . '" > ' . esc_html( $matches[2] ) . '</span>';
 	}
 
 	/**
@@ -301,9 +301,9 @@ class WbcrCmp_ConfigComments extends WBCR\Factory_Templates_134\Configurate {
 		$author = get_comment_author( $comment_ID );
 
 		if ( empty( $url ) || 'http://' == $url ) {
-			$return = $author;
+			$return = esc_html( $author );
 		} else {
-			$return = '<span class="wbcr-clearfy-pseudo-link" data-uri="' . $url . '">' . $author . '</span>';
+			$return = '<span class="wbcr-clearfy-pseudo-link" data-uri="' . esc_url( $url ) . '">' . esc_html( $author ) . '</span>';
 		}
 
 		return $return;

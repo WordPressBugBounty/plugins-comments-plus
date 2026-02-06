@@ -40,7 +40,7 @@ if ( ! defined( 'WCM_PLUGIN_ACTIVE' ) ) {
 		new WCM_Plugin();
 	} catch( Exception $e ) {
 		$wcm_plugin_error_func = function () use ( $e ) {
-			$error = sprintf( "The %s plugin has stopped. <b>Error:</b> %s Code: %s", 'Webcraftic Disable Comments', $e->getMessage(), $e->getCode() );
+			$error = sprintf( "The %s plugin has stopped. <b>Error:</b> %s Code: %s", 'Disable Comments', $e->getMessage(), $e->getCode() );
 			echo '<div class="notice notice-error"><p>' . $error . '</p></div>';
 		};
 

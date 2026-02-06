@@ -55,6 +55,21 @@ class WCM_Plugin extends Wbcr_Factory480_Plugin {
 				$this->register_pages();
 			}
 		} );
+
+		add_filter( 'themeisle_sdk_products', array( __CLASS__, 'register_sdk' ) );
+	}
+
+	/**
+	 * Register product into SDK.
+	 *
+	 * @param array $products All products.
+	 *
+	 * @return array Registered product.
+	 */
+	public static function register_sdk( $products ) {
+		$products[] = WCM_PLUGIN_FILE;
+
+		return $products;
 	}
 
 	/**
@@ -96,7 +111,6 @@ class WCM_Plugin extends Wbcr_Factory480_Plugin {
 
 		self::app()->registerPage( 'WbcrCmp_CommentsPage', $admin_path . '/class-page-comments.php' );
 		self::app()->registerPage( 'WbcrCmp_DeleteCommentsPage', $admin_path . '/class-page-delete-comments.php' );
-		self::app()->registerPage( 'WbcrCmp_MoreFeaturesPage', $admin_path . '/class-page-more-features.php' );
 	}
 
 	/**

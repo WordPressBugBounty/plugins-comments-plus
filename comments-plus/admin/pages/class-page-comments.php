@@ -79,7 +79,7 @@ class WbcrCmp_CommentsPage extends WBCR\Factory_Templates_134\Pages\PageBase {
 	 * @return string
 	 */
 	public function getPageTitle() {
-		return defined( 'LOADING_COMMENTS_PLUS_AS_ADDON' ) ? __( 'Comments', 'comments-plus' ) : __( 'General', 'comments-plus' );
+		return defined( 'LOADING_COMMENTS_PLUS_AS_ADDON' ) ? __( 'Disable Comments', 'comments-plus' ) : __( 'Disable Comments', 'comments-plus' );
 	}
 
 	/**
@@ -93,7 +93,7 @@ class WbcrCmp_CommentsPage extends WBCR\Factory_Templates_134\Pages\PageBase {
 
 		$options[] = [
 			'type' => 'html',
-			'html' => '<div class="wbcr-factory-page-group-header"><strong>' . __( 'Global disabling of comments', 'comments-plus' ) . '</strong><p>' . __( 'What is the difference between these and native WordPress functions? WordPress disables comments only for new posts! Using the functions below, you can disable comments globally, even for old posts, and you can choose which post types comments to disable. The plugin also disables the comment functionality itself, which creates a certain load on the site.', 'comments-plus' ) . '</p></div>'
+			'html' => '<div class="wbcr-factory-page-group-header"><strong>' . __( 'Global disabling of comments', 'comments-plus' ) . '</strong><p>' . __( 'Unlike native WordPress functions that only disable comments on new posts, these options disable comments globally on all posts, including existing ones. You can select specific post types and reduce server load by disabling comment functionality entirely.', 'comments-plus' ) . '</p></div>'
 		];
 
 		$args = [ 'public' => true ];
@@ -120,20 +120,20 @@ class WbcrCmp_CommentsPage extends WBCR\Factory_Templates_134\Pages\PageBase {
 			'way'     => 'buttons',
 			'title'   => __( 'Disable comments', 'comments-plus' ),
 			'data'    => [
-				[ 'enable_comments', __( 'Not disable', 'comments-plus' ) ],
+				[ 'enable_comments', __( 'Don\'t disable', 'comments-plus' ) ],
 				[
 					'disable_comments',
 					__( 'Everywhere', 'comments-plus' ),
-					sprintf( __( 'You can delete all comments in the database by clicking on this link (<a href="%s">cleaning comments in database</a>).', 'comments-plus' ), admin_url( 'admin.php?page=delete_comments-' . $this->plugin->getPluginName() ) )
+					sprintf( __( 'You can delete all comments in the database by clicking on this link (<a href="%s">cleaning comments in the database</a>).', 'comments-plus' ), admin_url( 'admin.php?page=delete_comments-' . $this->plugin->getPluginName() ) )
 				],
 				[
 					'disable_certain_post_types_comments',
 					__( 'On certain post types', 'comments-plus' ),
-					sprintf( __( 'You can delete all comments for the selected post types. Select the post types below and save the settings. After that, click the link (<a href="%s">delete all comments for the selected post types in database</a>).', 'comments-plus' ), admin_url( 'admin.php?page=delete_comments-' . $this->plugin->getPluginName() ) )
+					sprintf( __( 'You can delete all comments for the selected post types. Select the post types below and save the settings. After that, click the link (<a href="%s">delete all comments for the selected post types in the database</a>).', 'comments-plus' ), admin_url( 'admin.php?page=delete_comments-' . $this->plugin->getPluginName() ) )
 				]
 			],
-			'layout'  => [ 'hint-type' => 'icon', 'hint-icon-color' => 'grey' ],
-			'hint'    => __( 'Everywhere - Warning: This option is global and will affect your entire site. Use it only if you want to disable comments everywhere. A complete description of what this option does is available here', 'comments-plus' ) . '<br><br>' . __( 'On certain post types - Disabling comments will also disable trackbacks and pingbacks. All comment-related fields will also be hidden from the edit/quick-edit screens of the affected posts. These settings cannot be overridden for individual posts.', 'comments-plus' ),
+			'layout'  => [ 'hint-type' => 'icon', 'hint-icon-color' => 'green' ],
+			'hint'    => __( 'Everywhere - Warning: This option will globally disable comments on your entire site, including existing posts. Use only if you want to disable comments everywhere. This will hide all comment forms and existing comments from visitors.', 'comments-plus' ) . '<br><br>' . __( 'On certain post types - Disabling comments will also disable trackbacks and pingbacks. All comment-related fields will also be hidden from the edit/quick-edit screens of the affected posts. These settings cannot be overridden for individual posts.', 'comments-plus' ),
 			'default' => 'enable_comments',
 			'events'  => [
 				'disable_certain_post_types_comments' => [
@@ -156,7 +156,7 @@ class WbcrCmp_CommentsPage extends WBCR\Factory_Templates_134\Pages\PageBase {
 			'name'    => 'disable_comments_for_post_types',
 			'title'   => __( 'Select post types', 'comments-plus' ),
 			'data'    => $post_types,
-			'layout'  => [ 'hint-type' => 'icon', 'hint-icon-color' => 'grey' ],
+			'layout'  => [ 'hint-type' => 'icon', 'hint-icon-color' => 'green' ],
 			'hint'    => __( 'Select the post types for which comments will be disabled', 'comments-plus' ),
 			'default' => 'post,page,attachment'
 		];
@@ -165,10 +165,10 @@ class WbcrCmp_CommentsPage extends WBCR\Factory_Templates_134\Pages\PageBase {
 			$options[] = [
 				'type'    => 'textbox',
 				'name'    => 'disable_comments_extra_post_types',
-				'title'   => __( 'Custom post types', 'comments-plus' ),
+				'title'   => __( 'Custom Post Types (comma-separated slugs)', 'comments-plus' ),
 				'data'    => $post_types,
-				'layout'  => [ 'hint-type' => 'icon', 'hint-icon-color' => 'grey' ],
-				'hint'    => __( 'Only the built-in post types appear above. If you want to disable comments on other custom post types on the entire network, you can supply a comma-separated list of post types below (use the slug that identifies the post type).', 'comments-plus' ),
+				'layout'  => [ 'hint-type' => 'icon', 'hint-icon-color' => 'green' ],
+				'hint'    => __( 'Built-in post types appear above. To disable comments on custom post types, enter a comma-separated list of post type slugs below.', 'comments-plus' ),
 				'default' => ''
 			];
 		}
@@ -177,7 +177,7 @@ class WbcrCmp_CommentsPage extends WBCR\Factory_Templates_134\Pages\PageBase {
 			'way'     => 'buttons',
 			'name'    => 'disable_comments_permanent',
 			'title'   => __( 'Use persistent mode', 'comments-plus' ),
-			'layout'  => [ 'hint-type' => 'icon', 'hint-icon-color' => 'grey' ],
+			'layout'  => [ 'hint-type' => 'icon', 'hint-icon-color' => 'green' ],
 			'hint'    => __( 'This will make persistent changes to your database &mdash; comments will remain closed even if you later disable the plugin! You should not use it if you only want to disable comments temporarily.', 'comments-plus' ),
 			'default' => false
 		];
@@ -195,7 +195,7 @@ class WbcrCmp_CommentsPage extends WBCR\Factory_Templates_134\Pages\PageBase {
 					'way'     => 'buttons',
 					'name'    => 'remove_url_from_comment_form',
 					'title'   => __( 'Remove field "site" in comment form', 'comments-plus' ),
-					'layout'  => [ 'hint-type' => 'icon', 'hint-icon-color' => 'grey' ],
+					'layout'  => [ 'hint-type' => 'icon', 'hint-icon-color' => 'green' ],
 					'hint'    => __( 'Tired of spam in the comments? Do visitors leave "blank" comments for the sake of a link to their site?', 'comments-plus' ) . '<br><b>Clearfy: </b>' . __( 'Removes the "Site" field from the comment form.', 'comments-plus' ) . '<br>--<br><span class="wbcr-factory-light-orange-color"> *' . __( 'Works with the standard comment form, if the form is manually written in your theme-it probably will not work!', 'comments-plus' ) . '</span>',
 					'default' => false
 				],
@@ -205,7 +205,7 @@ class WbcrCmp_CommentsPage extends WBCR\Factory_Templates_134\Pages\PageBase {
 					'name'    => 'comment_text_convert_links_pseudo',
 					'title'   => __( 'Replace external links in comments on the JavaScript code', 'comments-plus' ),
 					'layout'  => [ 'hint-type' => 'icon' ],
-					'hint'    => __( 'Superfluous external links from comments, which can be typed from a dozen and more for one article, do not bring anything good for promotion.', 'comments-plus' ) . '<br><br><b>Clearfy: </b>' . sprintf( __( 'Replaces the links of this kind of %s, on links of this kind %s', 'comments-plus' ), '<code>a href="http://yourdomain.com" rel="nofollow"</code>', '<code>span data-uri="http://yourdomain.com"</code>' ),
+					'hint'    => __( 'External links in comments don\'t help SEO and can negatively affect your site\'s promotion.', 'comments-plus' ) . '<br><br><b>Clearfy: </b>' . sprintf( __( 'Converts links from %s format to %s format', 'comments-plus' ), '<code>a href="http://yourdomain.com" rel="nofollow"</code>', '<code>span data-uri="http://yourdomain.com"</code>' ),
 					'default' => false
 				],
 				[
@@ -214,7 +214,7 @@ class WbcrCmp_CommentsPage extends WBCR\Factory_Templates_134\Pages\PageBase {
 					'name'    => 'pseudo_comment_author_link',
 					'title'   => __( 'Replace external links from comment authors on the JavaScript code', 'comments-plus' ),
 					'layout'  => [ 'hint-type' => 'icon' ],
-					'hint'    => __( 'Up to 90 percent of comments in the blog can be left for the sake of an external link. Even nofollow from page weight loss here does not help.', 'comments-plus' ) . '<br><br><b>Clearfy: </b>' . __( 'Replaces the links of the authors of comments on the JavaScript code, it is impossible to distinguish it from usual links.', 'comments-plus' ) . '<br>--<br><i>' . __( 'In some Wordpress topics this may not work.', 'comments-plus' ) . '</i>',
+					'hint'    => __( 'Up to 90% of blog comments are left solely for external links. Even nofollow attributes don\'t prevent SEO impact.', 'comments-plus' ) . '<br><br><b>Clearfy: </b>' . __( 'Replaces the links of the authors of comments on the JavaScript code, it is impossible to distinguish it from usual links.', 'comments-plus' ) . '<br>--<br><i>' . __( 'In some WordPress themes this may not work.', 'comments-plus' ) . '</i>',
 					'default' => false
 				]
 			]

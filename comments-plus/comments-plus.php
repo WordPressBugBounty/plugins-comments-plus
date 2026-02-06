@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name: Webcraftic Disable Comments
- * Plugin URI: https://webcraftic.com
+ * Plugin Name: Disable Comments
+ * Plugin URI: https://wordpress.org/plugins/comments-plus/
  * Description: Allows administrators to globally disable comments on their site. Comments can be disabled for individual record types.
- * Author: Webcraftic <wordpress.webraftic@gmail.com>
- * Version: 1.2.0
+ * Author: Themeisle
+ * Version: 1.3.0
  * Text Domain: comments-plus
  * Domain Path: /languages/
- * Author URI: https://webcraftic.com
+ * Author URI: https://themeisle.com
  * Framework Version: FACTORY_480_VERSION
  */
 
@@ -43,11 +43,11 @@ require_once( dirname( __FILE__ ) . '/libs/factory/core/includes/class-factory-r
 $wcm_plugin_info = [
 	'prefix'               => 'wbcr_comments_plus_', // wbcr_cmp
 	'plugin_name'          => 'wbcr_comments_plus',
-	'plugin_title'         => 'Webcraftic Disable comments',
+	'plugin_title'         => 'Disable Comments',
 
 	// PLUGIN SUPPORT
 	'support_details'      => [
-		'url'       => 'https://webcraftic.com',
+		'url'       => 'https://themeisle.com',
 		'pages_map' => [
 			'support' => 'support',           // {site}/support
 			'docs'    => 'docs'               // {site}/docs
@@ -105,7 +105,7 @@ define( 'WCM_PLUGIN_VERSION', $wcm_compatibility->get_plugin_version() );
 define( 'WCM_PLUGIN_DIR', dirname( __FILE__ ) );
 define( 'WCM_PLUGIN_BASE', plugin_basename( __FILE__ ) );
 define( 'WCM_PLUGIN_URL', plugins_url( '', __FILE__ ) );
-
+define( 'WCM_PLUGIN_FILE', __FILE__ );
 
 
 /**
@@ -127,7 +127,7 @@ try {
 	define( 'WCM_PLUGIN_THROW_ERROR', true );
 
 	$wcm_plugin_error_func = function () use ( $e ) {
-		$error = sprintf( "The %s plugin has stopped. <b>Error:</b> %s Code: %s", 'Webcraftic Disable Comments', $e->getMessage(), $e->getCode() );
+		$error = sprintf( "The %s plugin has stopped. <b>Error:</b> %s Code: %s", 'Disable Comments', $e->getMessage(), $e->getCode() );
 		echo '<div class="notice notice-error"><p>' . $error . '</p></div>';
 	};
 
