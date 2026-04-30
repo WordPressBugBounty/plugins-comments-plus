@@ -338,6 +338,27 @@ if( !class_exists('Wbcr_FactoryPages480_AdminPage') ) {
 				$this->menu_post_type = null;
 			}
 
+			// if this page for a custom menu page
+			if( $this->menu_post_type ) {
+				$this->menu_target = 'edit.php?post_type=' . $this->menu_post_type;
+
+				if( empty($this->capabilitiy) ) {
+					$post_type_object = get_post_type_object($this->menu_post_type);
+
+ 					if( $post_type_object && isset( $post_type_object->cap ) && ! empty( $post_type_object->cap->edit_posts ) ) {
+ 						$this->capabilitiy = $post_type_object->cap->edit_posts;
+ 					}
+				}
+			}
+
+			// sets default capabilities
+			if( empty($this->capabilitiy) ) {
+				$this->capabilitiy = 'manage_options';
+			}
+
+			if ( ! current_user_can( $this->capabilitiy ) ) {
+				return;
+			}
 			// makes redirect to the page
 			$controller = $this->request->get('fy_page', null, true);
 
@@ -380,20 +401,6 @@ if( !class_exists('Wbcr_FactoryPages480_AdminPage') ) {
 				if( !$this->scripts->isEmpty() || !$this->styles->isEmpty() ) {
 					add_action('admin_enqueue_scripts', [$this, 'actionAdminScripts']);
 				}
-			}
-
-			// if this page for a custom menu page
-			if( $this->menu_post_type ) {
-				$this->menu_target = 'edit.php?post_type=' . $this->menu_post_type;
-
-				if( empty($this->capabilitiy) ) {
-					$this->capabilitiy = 'edit_' . $this->menu_post_type;
-				}
-			}
-
-			// sets default capabilities
-			if( empty($this->capabilitiy) ) {
-				$this->capabilitiy = 'manage_options';
 			}
 
 			// submenu

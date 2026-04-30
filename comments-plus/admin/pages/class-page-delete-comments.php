@@ -386,6 +386,9 @@ class WbcrCmp_DeleteCommentsPage extends WBCR\Factory_Templates_134\Pages\PageBa
 	 * This action deletes all comments from the database without restoring.
 	 */
 	public function deleteAllCommentsAction() {
+		if ( ! current_user_can( $this->capabilitiy ) ) {
+			return;
+		}
 		check_admin_referer( $this->getResultId() . '_delete_all_comments' );
 
 		if ( isset( $_POST['wbcr_cmp_delete_all'] ) ) {
@@ -481,6 +484,9 @@ class WbcrCmp_DeleteCommentsPage extends WBCR\Factory_Templates_134\Pages\PageBa
 	 * This action deletes spam comments
 	 */
 	public function deleteSpamCommentsAction() {
+		if ( ! current_user_can( $this->capabilitiy ) ) {
+			return;
+		}
 		check_admin_referer( $this->getResultId() . '_delete_spam_comments' );
 
 		$this->deleteComments( 'spam' );
@@ -490,6 +496,9 @@ class WbcrCmp_DeleteCommentsPage extends WBCR\Factory_Templates_134\Pages\PageBa
 	 * This action deletes unaproved comments
 	 */
 	public function deleteUnaprovedCommentsAction() {
+		if ( ! current_user_can( $this->capabilitiy ) ) {
+			return;
+		}
 		check_admin_referer( $this->getResultId() . '_delete_unaproved_comments' );
 
 		$this->deleteComments();
@@ -499,6 +508,9 @@ class WbcrCmp_DeleteCommentsPage extends WBCR\Factory_Templates_134\Pages\PageBa
 	 * This action deletes trash comments
 	 */
 	public function deleteTrashCommentsAction() {
+		if ( ! current_user_can( $this->capabilitiy ) ) {
+			return;
+		}
 		check_admin_referer( $this->getResultId() . '_delete_trash_comments' );
 
 		$this->deleteComments( 'trash' );

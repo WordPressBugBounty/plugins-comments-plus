@@ -4,7 +4,7 @@ Contributors: themeisle
 Requires at least: 5.6
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv2
 
 Disable comments globally on all posts or certain post types. Delete all comments at once, by post type or comment status. Manage links in comments.
@@ -109,6 +109,11 @@ becomes:
 
 You can choose whether to replace links **inside the comment text**, the **comment author profile URL**, or both. This keeps everything looking the same for visitors but removes the link functionality so search engines cannot treat them as real outbound links. The replacement happens only on the front end and does not modify the actual comment stored in your database.
 
+= How to report a security issue? =
+ 
+Plugin security is a core priority for us. If you identify a potential vulnerability, we ask that you disclose it responsibly.
+Please follow the reporting protocols outlined on our [Security Page](https://themeisle.com/security/).
+
 == Installation ==
 
 1. In your WordPress admin, go to **Plugins > Add New**
@@ -122,6 +127,14 @@ You can choose whether to replace links **inside the comment text**, the **comme
 2. Delete comments settings
 
 == Changelog ==
+
+#####   Version 1.3.1 (2026-04-30)
+
+- Enhanced security
+- Updated dependencies
+
+
+
 
 ####   Version 1.3.0 (2026-01-12)
 
