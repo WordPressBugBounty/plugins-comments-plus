@@ -4,7 +4,7 @@
  * Plugin URI: https://wordpress.org/plugins/comments-plus/
  * Description: Allows administrators to globally disable comments on their site. Comments can be disabled for individual record types.
  * Author: Themeisle
- * Version: 1.3.1
+ * Version: 1.3.2
  * Text Domain: comments-plus
  * Domain Path: /languages/
  * Author URI: https://themeisle.com
