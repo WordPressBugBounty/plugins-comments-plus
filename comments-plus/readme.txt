@@ -4,7 +4,7 @@ Contributors: themeisle
 Requires at least: 5.6
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 License: GPLv2
 
 Disable comments globally on all posts or certain post types. Delete all comments at once, by post type or comment status. Manage links in comments.
@@ -127,6 +127,13 @@ Please follow the reporting protocols outlined on our [Security Page](https://th
 2. Delete comments settings
 
 == Changelog ==
+
+#####   Version 1.3.3 (2026-07-29)
+
+- Updated dependencies
+
+
+
 
 #####   Version 1.3.2 (2026-05-25)
 
